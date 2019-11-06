@@ -3707,6 +3707,9 @@ nsProjectPagesManager.pages.voList = (function($) {
 					// 读取原始配置
 					fieldConfig.variableType = _fieldConfig.variableType;
 					fieldConfig.className = _fieldConfig.className;
+					// 读取原始中用英文名字 2019/11/06  
+					fieldConfig.chineseName = _fieldConfig.chineseName;
+					fieldConfig.englishName = _fieldConfig.englishName;
 				}
 				return fieldConfig;
 			}

@@ -9,55 +9,16 @@
     <meta name="description" content="网星云服务" />
     <meta name="author" content="netstar" />
     <title>编辑器</title>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/lib/jquery-1.11.3.js"></script>
+    <script src="../static/script/vue.js"></script>
+    <script src="../static/script/jquery.js"></script>
+    <script src="../static/script/tree.js"></script>
+    <link rel="stylesheet" href="../static/style/tree.css">
     <!-- 使用codeMirror必须引入的文件 -->
-    <!-- <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/lib/codemirror.css"> -->
-    <script src="./codeMirror/codemirror-5.48.2/lib/codemirror.js"></script>
-    <!-- Javascript代码高亮引入 -->
-    <script src="./codeMirror/codemirror-5.48.2/mode/javascript/javascript.js"></script>
-    <!-- 引入css文件，用以支持主题 -->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/theme/eclipse.css">
-    <!-- 引入js，绑定Vim -->
-    <script src="./codeMirror/codemirror-5.48.2/addon/dialog/dialog.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/keymap/vim.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/search/searchcursor.js"></script>
-    <!--改善vim输入命令时的样式-->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/addon/dialog/dialog.css">
-    <script src="./codeMirror/codemirror-5.48.2/addon/dialog/dialog.js"></script>
-    <!-- 支持代码折叠 -->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/addon/fold/foldgutter.css" />
-    <script src="./codeMirror/codemirror-5.48.2/addon/fold/foldcode.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/fold/foldgutter.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/fold/brace-fold.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/fold/comment-fold.js"></script>
-    <!--全屏模式-->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/addon/display/fullscreen.css">
-    <script src="./codeMirror/codemirror-5.48.2/addon/display/fullscreen.js"></script>
-    <!-- 自动补全提示框 -->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/addon/hint/show-hint.css">
-    <script src="./codeMirror/codemirror-5.48.2/addon/hint/show-hint.js"></script>
-    <!-- 左右括号颜色高亮,括号匹配 -->
-    <script src="./codeMirror/codemirror-5.48.2/addon/edit/matchbrackets.js"></script>
-    <!--行注释-->
-    <script src="./codeMirror/codemirror-5.48.2/addon/comment/comment.js"></script>
-    <!-- 格式化 -->
-    <script src="./codeMirror/codemirror-5.48.2/lib/formatting.js"></script>
-    <!--代码检查错误-->
-    <link rel="stylesheet" href="./codeMirror/codemirror-5.48.2/addon/lint/lint.css">
-    <script src="./codeMirror/codemirror-5.48.2/addon/lint/javascript-lint.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/lint/lint.js"></script>
-    <script src="./codeMirror/codemirror-5.48.2/addon/lint/json-lint.js"></script>
-    <!-- <script src="./codeMirror/codeEdit.js"></script> -->
+    <!--# include file="./codeMirror/codemirror.html" -->
     <script type="text/javascript">
         var language = 'cn';
         mxBasePath = '/assets/flow/'; //mx基础库 应当有resource css images等 '../src';
     </script>
-    <script src="../static/script/tree.js"></script>
-    <script src="../static/script/axios.min.js"></script>
-    <link rel="stylesheet" href="../static/style/tree.css">
-    <!-- 引入样式 -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
     <!-- 引入组件库 -->
     <!--# include file="/sites/include/login-static-dev.html" -->
     <!--# include file="/sites/include/preload-static-dev.html" -->
@@ -965,7 +926,7 @@
                     // _this.dataJson.components[currentIndex].field.push(params);
                 }
                 if(param.id == "btn"){
-                    var addCptJson = param.btnFun;
+                    var addCptJson = param.btn;
                     var fieldsList = _this.dataJson.components[currentSecondIndex].field;
                     fieldsList.push(addCptJson);
                 }
