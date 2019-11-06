@@ -1,0 +1,22 @@
+@calendar-padding: @base-padding;
+@carlendar-current-bg: #fffbf2;
+@carlendar-td-border-color: @table-border-color;
+.pt-calendar{
+    .pt-calendar-title{
+        padding: @calendar-padding;
+    }
+    .pt-btn-group + h4{
+        display: inline-block;
+        margin-left: @base-margin;
+        line-height: 24px;
+    }
+
+    .currentday{
+        background: @carlendar-current-bg;
+    }
+
+    .task-row-item{
+        border: 1px solid @carlendar-td-border-color;
+        border-width: 0 1px 1px 0;
+    }
+}

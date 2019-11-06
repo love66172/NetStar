@@ -1,0 +1,125 @@
+<!--
+ * @Desription: 文件说明
+ * @Author: netstar.cy
+ * @Date: 2019-08-22 16:17:02
+ * @LastEditTime: 2019-09-26 16:51:14
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="网星云服务" />
+    <meta name="author" content="netstar" />
+	<!--# include file="/sites/include/login-static-dev.html" -->
+	
+	<title>DEV.网星云.GITTEST</title>
+    <script type="text/javascript">
+        var language = 'cn';
+        mxBasePath = '/assets/flow/'; //mx基础库 应当有resource css images等 '../src';
+    </script>
+	<style id="loginStyle">	</style>
+</head>
+<body class="login"></body>
+
+<script type="text/javascript">
+ 	// var webRootPath = 	'http://nscloud.applinzi.com/';
+	// var serverRootPath = 'http://testcloud.demo.netstar-soft.com/';
+	// var serverRootPath = 'https://wangxingcloud.com/';
+	// var serverRootPath = 'http://10.10.1.234:30000/';
+	// var serverRootPath = 	'http://api.cloud.netstar-soft.com/';
+	var serverRootPath = 	'https://qaapi.wangxingcloud.com/';
+    var debugerMode = true; 
+	
+	$(function () {
+		//用于调试代码 重新定位server的url cy 20190828 读取地址栏中的?nsserver=http://api.cloud.netstar-soft.com/ 
+		serverRootPath = NetStarUtils.resetServerUrl.reset(serverRootPath);
+		
+		NetstarLoginHtml.init();
+		var loginUrl = window.location.href;
+		//var rootPath = 'http://nscloud.applinzi.com/';
+		
+      var rootPath = '/';
+		var sourcePath = 'dist/';
+
+		NetstarLogin.init({
+			loginUrl:loginUrl,
+			expireMinute:119, //过期时长 单位是分钟
+			containerEl:'#loginPanel',
+			usernameEl:"#username",
+			passwordEl:"#password",
+			submitBtnEl:'#btn-submit',
+			msgEl:"#pwmsg",
+			images:{
+				logo:rootPath + 'sites/devcloud/images/login/logo.png',
+				bg:rootPath + 'sites/devcloud/images/login/bg.png',
+			},
+			cookieJson:{
+				username: "username", //用户名id
+				remember: "remember" //记住用户名id
+			},
+			loginAjax:{ 				//登录验证
+				url:serverRootPath + 'system/jwtlogin', 
+			},
+			getLoginProperty:{ 			//获取登录信息，包括用户信息等  
+				url:serverRootPath + 'servletContexts/properties',
+            },
+            getDict:{
+				url:serverRootPath + 'system/dicts/getDict', //默认系统字典
+				type:'GET',
+				data:{},
+				contentType : 'application/x-www-form-urlencoded',
+			},
+			styleEl:'#loginStyle', //登录专用的CSS 
+			rootPath:rootPath,
+			sourcePath:sourcePath,
+			userMode:'dev', 		//  dev 开发  /dist 发布  /online 生产环境
+            mainPage:{
+				url:'/sites/base/home/'
+			},
+            mainMenus:{
+				id: "mainpage-menus-contianer",  //插入主菜单的容器ID 例如 <div id="mainpage-menus-contianer" class="pt-nav pt-dropdown"></div>
+
+               ajax:{
+					url:serverRootPath + 'system/menus/getUserMenu',
+					contentType: 'application/x-www-form-urlencoded',
+                    data:{
+								// usedOnPcOrPhone:0
+								isPc : true,
+								// productId : "1307532378352124905"
+                    },
+                    dataSrc:'rows',
+                    type:'GET'
+                },
+                convertToTree: true,
+                menuChildIdField: "children",
+                menuIdField: "menuId",
+                menuNameField: "menuName",
+                menuParentIdField: "menuParentId",
+                menuUrlField: "url",
+            },
+			// staticSourceAjax:{ 	//静态资源文件
+			// 	url:'/erp/data/static-source.json'
+			// }, 
+			
+		})
+
+		//轮播图
+		var config = {
+			time : 3000,
+			rootPath:'',
+            width : '100%',
+            height : '100%',
+            id : 'running',
+            valueField : 'url',
+            ajax : {
+                url : '/assets/json/newcomponent/rotaryplantingmap.json',
+                type : 'GET',
+                dataSrc : 'rows',
+            }
+        }
+      //   NetstarRotaryPlantingMap.init(config)
+	})
+</script>
+</html>

@@ -1,0 +1,457 @@
+<!--# include file="/sites/docs/include/homepage-html-dev-1.html" -->
+<container>
+    <div class="netstar-docs">
+        <!-- 导航 -->
+        <div class="panel nav-stacked">
+            <div class="side-bar">
+                <ul>
+                    <li><a href="#sense-params">参数说明</a></li>
+                    <li><a href="#sense-nsdocs-radio-value">显示的值</a></li>
+                    <li><a href="#sense-nsdocs-radio-subdata">获取数据</a></li>
+                    <li><a href="#sense-nsdocs-radio-disabled">只读</a></li>
+                    <li><a href="#sense-nsdocs-radio-width">样式宽</a></li>
+                    <li><a href="#sense-nsdocs-radio-static">静态模式</a></li>
+                    <li><a href="#sense-nsdocs-radio-checkbox">复选框参数说明</a></li>
+                    <li><a href="#sense-nsdocs-radio-checkbox-care">复选框使用注意</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--内容  -->
+        <div class="panel content">
+            <!-- 按钮 -->
+            <div class="panel btns-group">
+                <!-- class="btn-default" -->
+                <button><i class="fa-code"></i>页面配置</button>
+                <button><i class="fa-crosshairs"></i>获取值</button>
+                <button><i class="fa-bookmark"></i>赋值</button>
+                <button><i class="fa-edit"></i>编辑</button>
+            </div>
+            <!-- 通用参数 -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1></h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>columns</td>
+                            <td></td>
+                            <td>array</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td></td>
+                            <td>string</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ui</td>
+                            <td> </td>
+                            <td>string</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-number-value"></a>
+                <h3 class="title-code"></h3>
+                <span class="intro"></span>
+                <div id="" class="panel-demo"></div>
+                <div class="content language-javascript">
+               <pre>
+    {    
+        columns:[...   //具体参数详见下面 ]
+        data:{ ...  //具体参数详见下面}
+        ui:{...  //具体参数详见下面}
+    } 
+                    </pre>
+                </div>
+            </div>
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>columns</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>field</td>
+                            <td>不可重复字段名</td>
+                            <td>string</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td>字段id</td>
+                        </tr>
+                        <tr>
+                            <td>title</td>
+                            <td>标题</td>
+                            <td>string</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td>{}</td>
+                        </tr>
+                        <tr>
+                            <td>columnType</td>
+                            <td> 类型</td>
+                            <td>string</td>
+                            <td><i class="fa fa-check"></i></td>
+                            <td>表格设置</td>
+                        </tr>
+                        </tr>
+                            <td>editable</td>
+                            <td>是否编辑</td>
+                            <td>boolean</td>
+                            <td></td>
+                            <td>是否可以编辑</td>
+                        </tr>
+                        </tr>
+                            <td>orderable</td>
+                            <td>是否允许列搜索</td>
+                            <td>boolean</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                            <td>searchable</td>
+                            <td>是否允许列搜索</td>
+                            <td>boolean</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                            <td>tooltip</td>
+                            <td>提示信息</td>
+                            <td>boolean</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tr>
+                            <td>isDefaultSubdataText</td>
+                            <td>默认字符串替换</td>
+                            <td>boolean</td>
+                            <td></td>
+                            <td>select/radio/checkbox时有效</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-number-value"></a>
+                <h3 class="title-code"></h3>
+                <span class="intro"></span>
+                <div id="" class="panel-demo"></div>
+                <div class="content language-javascript">
+                    <pre>
+    columns: [
+        { ......//标题，类型等配置 举例如下},
+    
+        {  
+            field: "num", 
+            title: "数量",    
+            columnType" "number",   
+            variableType: "number",
+            editable: true,
+            isDefaultSubdataText:true,
+            searchable:true,
+            orderable:false,
+            formatType: {
+                type: "number",
+                format: ",."
+            },
+            footer: {
+                "type": "sum"//合计
+            },
+            editConfig: {
+                "total": "{{money}}-{{price}}"
+            },
+            formatHandler: {
+
+            }  
+        },
+    ]
+                    </pre>
+                </div>
+            </div>
+            <!-- date参数说明 -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>data</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <tr>
+                                <td>idField</td>
+                                <td>数据集中主键字段名，或不重复的字段名</td>
+                                <td>object</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td></td>
+                            </tr> 
+                            <tr>
+                                <td>tableId</td>
+                                <td>容器DOM的id</td>
+                                <td>object</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>dataSourc</td>
+                                <td>静态数据源</td>
+                                <td>object</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td></td>
+                            </tr>     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-number-value"></a>
+                <h3 class="title-code"></h3>
+                <span class="intro"></span>
+                <div id="grid-base-grid" class="panel-demo"></div>
+                <!-- js块 -->
+                <div class="content language-javascript ">
+                    <pre>
+    data:{
+       idField:"id",
+       tableID:"//id名称"
+       dataSourc:[,
+                {
+                    num:"数字",
+                }
+       ]
+    }
+                </pre>
+                </div>
+            </div>
+            <!--  money   -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>ui</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>isAutoSerial</td>
+                                <td>是否序号</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>isCheckSelect</td>
+                                <td>是否勾选</td>
+                                <td>boolean</td>
+                                <td></i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>isHeader</td>
+                                <td></td>
+                                <td>bolean</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>isPage</td>
+                                <td>分页</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否可以分页</td>
+                            </tr>
+                            <tr>
+                                <td>minPageLength</td>
+                                <td>最小页面长度</td>
+                                <td>number</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>isEditMode</td>
+                                <td>是否可以编辑</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pageLengthMenu</td>
+                                <td>允许翻页长度</td>
+                                <td>array</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pageLengthDefault</td>
+                                <td>页面长度1</td>
+                                <td>number</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>selectMode</td> 
+                                <td>选择</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>选择方式 single（单选）,multi（多选</td>
+                            </tr>
+                            <tr>
+                                <td>styleExpress</td> 
+                                <td>样式表</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>topageDefaulc</td> 
+                                <td>第几条</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>isHaveEditDeleteBtn</td>
+                                <td>是否有编辑和删除按钮</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>tableRowBtns</td>
+                                <td>表格行内按钮</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>height</td>
+                                <td>高</td>
+                                <td>number</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>ajaxSuccessHandler</td>
+                                <td>ajax完成回调</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>completeHandler</td>
+                                <td>完成事件</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pageChangeAfterHandler</td>
+                                <td>翻页回调</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pageLengthChangeHandler</td>
+                                <td>改变条数回调</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>rowdbClickHandler</td>
+                                <td>双击回调</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>selectedHandler</td>
+                                <td>行选中</td>
+                                <td>function</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id=""></a>
+                <h3 class="title-code"></h3>
+                <span class="intro"></span>
+                <div id="grid-base-money" class="panel-demo"></div>
+                <!-- js块 -->
+                <div class="content language-javascript ">
+                    <pre>
+    ui:{
+        isAutoSerial:true, 
+        isCheckSelect:false，
+        isHeader:false,
+        isPsge:false,
+        minPageLength:10,
+        isEditMode:true,s
+        pageLengthMenu:[],
+        pageLengthDefault:20,
+        selectMode:"single",
+        isHaveEditDeleteBtn:true,
+        isAllowAdd:true,
+        height:369,
+        
+    }
+                    </pre>
+                </div>
+            </div>
+            <!-- 演示试例 -->
+        </div>
+    </div>
+    </div>
+</container>
+
+<!--# include file="/sites/docs/include/homepage-html-dev-2.html" -->

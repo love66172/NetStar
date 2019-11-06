@@ -1,0 +1,230 @@
+{
+    "success":true,
+    "operatorProperity": [
+        {
+            "id": "id",
+            "label": "文本 :",
+            "type": "text" 
+        },
+        {
+            "id": "select",
+            "label": "下拉 :",
+            "type": "select",
+            "rules": "",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": "none"
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "value1",
+            "label": "单选 :",
+            "type": "radio",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": "none"
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "checkbox",
+            "label": "复选 :",
+            "type": "checkbox",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": ""
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "textarea",
+            "label": "文本域 :",
+            "type": "textarea"
+        },
+        {
+            "id": "isSet",
+            "label": "文本域 :",
+            "type": "textarea"
+        }
+    ],
+    "dataProperity":[
+        {
+            "id": "id",
+            "label": "文本 :",
+            "type": "text" 
+        },
+        {
+            "id": "select",
+            "label": "下拉 :",
+            "type": "select",
+            "rules": "",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": "none"
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "value1",
+            "label": "单选 :",
+            "type": "radio",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": "none"
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "checkbox",
+            "label": "复选 :",
+            "type": "checkbox",
+            "textField": "name",
+            "valueField": "id",
+            "subdata": [
+                {
+                    "id": "1",
+                    "name": "男",
+                    "state": ""
+                },
+                {
+                    "id": "2",
+                    "name": "女"
+                },
+                {
+                    "id": "3",
+                    "name": "其它"
+                }
+            ]
+        },
+        {
+            "id": "textarea",
+            "label": "文本域 :",
+            "type": "textarea"
+        },
+        {
+            "id": "isSet",
+            "label": "文本域 :",
+            "type": "textarea"
+        }
+    ],
+    "prepatternList":[
+        {
+            "value":{
+                "id":"value1",
+                "label": "单选 :",
+                "type": "radio",
+                "textField": "name",
+                "valueField": "id",
+                "subdata": [
+                    {
+                        "id": "1",
+                        "name": "男",
+                        "state": "none"
+                    },
+                    {
+                        "id": "2",
+                        "name": "女"
+                    },
+                    {
+                        "id": "3",
+                        "name": "其它"
+                    }
+                ]
+            }
+            
+        },
+        {
+            "value":{
+                "id":"checkbox",
+                "label": "复选 :",
+                "type": "checkbox",
+                "textField": "name",
+                "valueField": "id",
+                "subdata": [
+                    {
+                        "id": "1",
+                        "name": "男",
+                        "state": ""
+                    },
+                    {
+                        "id": "2",
+                        "name": "女"
+                    },
+                    {
+                        "id": "3",
+                        "name": "其它"
+                    }
+                ]
+            }
+            
+        },
+        {
+            "value":{
+                "id": "id",
+                "label": "文本 :",
+                "type": "text" 
+            }           
+        }
+    ]
+}

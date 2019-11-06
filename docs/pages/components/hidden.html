@@ -1,0 +1,164 @@
+<!--# include file="/sites/docs/include/homepage-html-dev-1.html" -->
+<container>
+    <div class="netstar-docs">
+        <!-- 导航 -->
+        <div class="panel nav-stacked">
+            <div class="side-bar">
+                <ul>
+                    <li><a href="#sense-params">参数说明</a></li>
+                    <li><a href="#sense-nsdocs-date-value">显示的值</a></li>
+                    <li><a href="#sense-nsdocs-date-disabled">只读</a></li>
+                    <li><a href="#sense-nsdocs-date-width">样式宽</a></li>
+                    <li><a href="#sense-nsdocs-date-rules">验证</a></li>
+                    <li><a href="#sense-nsdocs-date-isTime">显示时间</a></li>
+                    <li><a href="#sense-nsdocs-date-addvalue">添加按钮</a></li>
+                    <li><a href="#sense-nsdocs-date-isDefaultDate">默认日期</a></li>
+                    <li><a href="#sense-nsdocs-date-startview">开始视图</a></li>
+                    <li><a href="#sense-nsdocs-date-format">日期格式</a></li>
+                    <li><a href="#sense-nsdocs-date-mindjetFieldPosition">是否在更多里显示</a></li>
+                    <li><a href="#sense-nsdocs-date-static"></a>静态模式</li>
+ 
+                </ul>
+            </div>
+        </div>
+        <!--内容  -->
+        <div class="panel content">
+            <!-- 按钮 -->
+            <div class="panel btns-group">
+                <!-- class="btn-default" -->
+                <button><i class="fa-code"></i>页面配置</button>
+                <button><i class="fa-crosshairs"></i>获取值</button>
+                <button><i class="fa-bookmark"></i>赋值</button>
+                <button><i class="fa-edit"></i>编辑</button>
+
+
+            </div>
+            <!-- 参数说明 -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>hidden</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>唯一标识</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>组件id，实际生成的表单中名称为'form-'+id id不可重复</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>组件类型</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>hidden</td>
+                            </tr>
+                            <tr>
+                                <td>label</td>
+                                <td>标签</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件的标签，未配置则不显示</td>
+                            </tr>
+                            <tr>
+                                <td>rules</td>
+                                <td>验证规则</td>
+                                <td>string</td>
+                                <td><i></i></td>
+                                <td>当前组件仅支持 必填验证：required</td>
+                            </tr>
+                            <tr>
+                                <td>value</td>
+                                <td>显示的值</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>默认显示的值</td>
+                            </tr>
+                            <tr>
+                                <td>disabled</td>
+                                <td>只读</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否只读(默认flase)</td>
+                            </tr>
+                            <tr>
+                                <td>formSource</td>
+                                <td>显示类型</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件模板名字；直接调用组件时配置，表单配置时不需要配置直接通过表单配置设置了组件配置（默认）</td>
+                            </tr>
+                            <tr>
+                                <td>width</td>
+                                <td>宽</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件整体宽度 *% 与inputWidth不共存</td>
+                            </tr>
+                            <tr>
+                                <td>hidden</td>
+                                <td>是否隐藏</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否隐藏(默认false)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 演示试例 -->
+            <!-- 输入模式 value -->
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-value"></a>
+                <!-- <span>快捷键左右选择</span> -->
+                <h3 class="title-code">显示的值</h3>
+                <span class="intro">默认显示内容:日期组件value值必须是数字</span>
+                <div id="nsdocs-date-value" class="panel-demo"></div>
+                <script>
+                    /*输入模式value*/
+                    var formJsonValue = {
+                        id: 'nsdocs-date-value',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        //formStyle: "pt-form-normal",取消边框
+                        form: [{
+                            id: 'value',
+                            label: '显示 :',
+                            type: 'hidden',
+                            value: "香蕉",  
+                        }] 
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonValue, {});
+                    NetstarComponent.formComponent.init(component, formJsonValue);
+                    /*输入模式value---end*/
+                </script>
+                <div class="content language-javascript">
+              <pre>
+    {
+        id: 'value',
+        label: '显示 :',
+        type: 'hidden',
+        value: "香蕉",  
+    }
+
+                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>
+
+<!--# include file="/sites/docs/include/homepage-html-dev-2.html" -->

@@ -1,0 +1,633 @@
+<!--# include file="/sites/docs/include/homepage-html-dev-1.html" -->
+<container>
+    <div class="netstar-docs">
+        <!-- 导航 -->
+        <!-- <div class="panel nav-stacked">
+            <div class="side-bar">
+                <ul>
+                    <li><a href="#sense-params">参数说明</a></li>
+                    <li><a href="#sense-nsdocs-date-value">显示的值</a></li>
+                    <li><a href="#sense-nsdocs-date-disabled">只读</a></li>
+                    <li><a href="#sense-nsdocs-date-width">样式宽</a></li>
+                    <li><a href="#sense-nsdocs-date-rules">验证</a></li>
+                    <li><a href="#sense-nsdocs-date-isTime">显示时间</a></li>
+                    <li><a href="#sense-nsdocs-date-addvalue">添加按钮</a></li>
+                    <li><a href="#sense-nsdocs-date-isDefaultDate">默认日期</a></li>
+                    <li><a href="#sense-nsdocs-date-startview">开始视图</a></li>
+                    <li><a href="#sense-nsdocs-date-format">日期格式</a></li>
+                    <li><a href="#sense-nsdocs-date-mindjetFieldPosition">是否在更多里显示</a></li>
+                    <li><a href="#sense-nsdocs-date-static"></a>静态模式</li>
+ 
+                </ul>
+            </div>
+        </div> -->
+
+        <!--内容  -->
+        <div class="panel content">
+            <!-- 按钮 -->
+            <div class="panel btns-group">
+                <!-- class="btn-default" -->
+                <button><i class="fa-code"></i>页面配置</button>
+                <button><i class="fa-crosshairs"></i>获取值</button>
+                <button><i class="fa-bookmark"></i>赋值</button>
+                <button><i class="fa-edit"></i>编辑</button>
+
+
+            </div>
+            <!-- 参数说明 -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>date</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>唯一标识</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>组件id，实际生成的表单中名称为'form-'+id id不可重复</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>组件类型</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>date</td>
+                            </tr>
+                            <tr>
+                                <td>label</td>
+                                <td>标签</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件的标签，未配置则不显示</td>
+                            </tr>
+                            <tr>
+                                <td>rules</td>
+                                <td>验证规则</td>
+                                <td>string</td>
+                                <td><i></i></td>
+                                <td>当前组件仅支持 必填验证：required</td>
+                            </tr>
+                            <tr>
+                                <td>value</td>
+                                <td>显示的值</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>默认显示的值</td>
+                            </tr>
+                            <tr>
+                                <td>disabled</td>
+                                <td>只读</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否只读(默认flase)</td>
+                            </tr>
+                            <tr>
+                                <td>inputWidth</td>
+                                <td>宽</td>
+                                <td>number</td>
+                                <td></td>
+                                <td>组件除去label的宽度 与width不共存(默认100)</td>
+                            </tr>
+                            <tr>
+                                <td>width</td>
+                                <td>宽</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件整体宽度 *% 与inputWidth不共存</td>
+                            </tr>
+                            <tr>
+                                <td>changeHandler</td>
+                                <td>变更处理程序</td>
+                                <td>function</td>
+                                <td></td>
+                                <td>组件值改变时触发 即value值发生改变时触发</td>
+
+                            </tr>
+                            <tr>
+                                <td>hidden</td>
+                                <td>隐藏</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否隐藏(默认flase)</td>
+                            </tr>
+                            <tr>
+                                <td>acts</td>
+                                <td>静态参数</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>静态模式时的参数 详见：静态数据配置</td>
+                            </tr>
+                            <tr>
+                                <td>formSource</td>
+                                <td>组件模式</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件模式；直接调用组件时配置，表单配置时不需要配置直接通过表单配置设置了组件配置(默认from)</td>
+                            </tr>
+                            <tr>
+                                <td>templateName</td>
+                                <td>组件模式名字</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件模板名字；直接调用组件时配置，表单配置时不需要配置直接通过表单配置设置了组件配置(默认pc)</td>
+                            </tr>
+                            <tr>
+                                <td>mindjetFieldPosition</td>
+                                <td>是否在更多种显示</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>是否是更多中显示的数据(默认field) field-more</td>
+                            </tr>
+                            <tr>
+                                <td>startView</td>
+                                <td>开始视图</td>
+                                <td>number</td>
+                                <td></td>
+                                <td>开始视图 0(日)/1(月->日)/2(年->月->日)(默认from)</td>
+                            </tr>
+                            <tr>
+                                <td>addvalue</td>
+                                <td>添加按钮</td>
+                                <td>object</td>
+                                <td></td>
+                                <td>日期底部按钮 配置 {value:''，id:''}(默认pc)</td>
+                            </tr>
+                            <tr>
+                                <td>format</td>
+                                <td>日期格式</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>日期格式 yyy-mm-dd (默认：nsVals.default.dateFormat)</td>
+                            </tr>
+                            <tr>
+                                <td>isInputMask</td>
+                                <td>样式验证</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>输入样式验证</td>
+                            </tr>
+                            <tr>
+                                <td>isDefaultDate</td>
+                                <td>默认日期</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否设置默认日期(默认false)</td>
+                            </tr>
+                            <tr>
+                                <td>isTime</td>
+                                <td>添加时间</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否添加时间</td>
+                            </tr>
+                            <tr>
+                                <td>daysOfWeekDisabled</td>
+                                <td>字符串或数组格式</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>字符串或数组格式 根据周几设置只读 默认''即不设置只读</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 演示试例 -->
+            <!-- 输入模式 value -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-value"></a>
+                <!-- <span>快捷键左右选择</span> -->
+                <h3 class="title-code">显示的值</h3>
+                <span class="intro">默认显示内容:日期组件value值必须是数字</span>
+                <div id="nsdocs-date-value" class="panel-demo"></div>
+                <script>
+                    /*输入模式value*/
+                    var formJsonValue = {
+                        id: 'nsdocs-date-value',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'value',
+                            label: '显示 :',
+                            type: 'date',
+                            value: 1544148749870,  //value值必须是数字
+                        }] 
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonValue, {});
+                    NetstarComponent.formComponent.init(component, formJsonValue);
+                    /*输入模式value---end*/
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'value',
+        label: '显示 :',
+        type: 'date',
+        value: 1544148749870,  //value值必须是数字
+    } 
+
+                </pre>
+                </div>
+            </div>
+            <!-- 标准输入模式只读disabled -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-disabled"></a>  
+                <h3 class="title-code">只读</h3>
+                <span class="intro">只读，不可编辑 </span>
+                <div id="nsdocs-date-disabled" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonDisbled = {
+                        id: 'nsdocs-date-disabled',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'disabled',
+                            label: '只读 :',
+                            type: 'date',
+                            disabled: true, //只读模式                       
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonDisbled, {});
+                    NetstarComponent.formComponent.init(component, formJsonDisbled);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'disabled',
+        label: '只读 :',
+        type: 'date',
+        disabled: true,   //只读模式
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 样式宽-->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-width"></a>
+                <h3 class="title-code">样式宽</h3>
+                <span class="intro">宽</span>
+                <div id="nsdocs-date-width" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonWidth = {
+                        id: 'nsdocs-date-width',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false, //是否显示更多
+                        form: [{
+
+                            id: 'width',
+                            label: '宽 :',
+                            type: 'date',
+                            inputWidth: 300,   //宽
+
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonWidth, {});
+                    NetstarComponent.formComponent.init(component, formJsonWidth);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+                
+        id: 'width',
+        label: 'width宽:',
+        type: 'date',
+        iwidth: 300,    //宽
+
+    }
+                            </pre>
+                </div>
+            </div>
+            <!-- 验证 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-rules"></a>  
+                <h3 class="title-code">验证</h3>
+                <span class="intro">验证规则</span>
+                <div id="nsdocs-date-rules" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonrules = {
+                        id: 'nsdocs-date-rules',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,  
+                        form: [{
+                            id: 'requied',
+                            label: '验证 :',
+                            type: 'date',
+                            rules:'required',//必填验证              
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonrules, {});
+                    NetstarComponent.formComponent.init(component, formJsonrules);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'requied',
+        label: '只读 :',
+        type: 'map',
+        rules:'requied',   //必填验证                    
+    }
+                    </pre>
+                </div>
+            </div>
+            <!-- 是否添加时间 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-isTime"></a>
+                <h3 class="title-code">是否显示时间</h3>
+                <span class="intro">显示时间</span>
+                <div id="nsdocs-date-istime" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonisTime = {
+                        id: 'nsdocs-date-istime',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            isHasClose: false,
+                            id: 'isTime',
+                            label: '显示时间:',
+                            type: 'date',
+                            isTime:true,//是否显示时间
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonisTime, {});
+                    NetstarComponent.formComponent.init(component, formJsonisTime);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        isHasClose: false,
+        id: 'isTime',
+        label: '显示时间:',
+        type: 'date',
+        isTime:true, //是否显示时间
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 添加按钮 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-addvalue"></a>
+                <h3 class="title-code">添加按钮</h3>
+                <span class="intro">添加日期按钮</span>
+                <div id="nsdocs-date-addvalue" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonAddvalue = {
+                        id: 'nsdocs-date-addvalue',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'addvalue',
+                            label: '添加按钮:',
+                            type: 'date',
+                            value: 1544148749870,
+                            addvalue:{          //添加按钮
+                                value:"添加按钮",
+                                id:"1",
+                            },
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonAddvalue, {});
+                    NetstarComponent.formComponent.init(component, formJsonAddvalue);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        isHasClose: false,
+        id: 'addvalue',
+        label: '添加按钮:',
+        type: 'date',
+        value: 1544148749870,
+        addvalue:{          //添加按钮
+            value:'添加按钮',
+            id:'1',
+        },
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 是否设置默认日期 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-isDefaultDate"></a>
+                <h3 class="title-code">默认日期</h3>
+                <span class="intro">是否设置默认日期</span>
+                <div id="nsdocs-date-isdefaultdate" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonIsDefaultDate= {
+                        id: 'nsdocs-date-isdefaultdate',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'isdefaultdate',
+                            label: '默认日期 :',
+                            type: 'date',
+                            isDefaultDate:true, //设置默认日期
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonIsDefaultDate, {});
+                    NetstarComponent.formComponent.init(component, formJsonIsDefaultDate);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'isdefaultdate',
+        label: '默认日期 :',
+        type: 'date',
+        isDefaultDate:true, //设置默认日期
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 开始视图 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-startview"></a>
+                <h3 class="title-code">开始视图</h3>
+                <span class="intro">日期开始视图</span>
+                <div id="nsdocs-date-startview" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonsSartView = {
+                        id: 'nsdocs-date-startview',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'startView',
+                            label: '开始视图:',
+                            type: 'date',
+                            value:1544148749870,
+                            startView: 2 , // 0(日)/1(月->日)/2(年->月->日)
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonsSartView, {});
+                    NetstarComponent.formComponent.init(component, formJsonsSartView);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        isHasClose: false,
+        id: 'startView',
+        label: '开始视图:',
+        type: 'date',
+        value: 1544148749870,
+        startView: 2 , // 0(日)/1(月->日)/2(年->月->日)
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 日期格式 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-format"></a>
+                <h3 class="title-code">日期格式</h3>
+                <span class="intro">日期格式 9数字  a字母  y年   h小时  s年   m月   </span>
+                <div id="nsdocs-date-format" class="panel-demo"></div>
+                <!-- js块 -->
+                <script>
+                    var formJsonFormat = {
+                        id: 'nsdocs-date-format',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'date1',
+                            label: '生日1',
+                            type: 'date',
+                            value: 1564761383000,
+                            format: 'HH:mm:ss',
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonFormat, {});
+                    NetstarComponent.formComponent.init(component, formJsonFormat);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'date1',
+        label: '生日1',
+        type: 'date',
+        value: 1564761383000,
+        format: 'HH:mm:ss',
+
+    }
+                        </pre>
+                </div>
+            </div>
+            <!-- 是否是更多显示的数据 -->
+            <div class="panel content-demo" netstar-doc="sample">
+            <a href="javascript:void(0);" id="sense-nsdocs-date-mindjetfieldposition"></a>
+            <h3 class="title-code">是否在更多中显示</h3>
+            <span class="intro">是否在更多中显示 </span>
+            <div id="nsdocs-date-mindjetfieldposition" class="panel-demo"></div>
+            <!-- js块 -->
+            <script>
+                var formJsonmindjetFieldPosition = {
+                    id: 'nsdocs-date-mindjetfieldposition',
+                    templateName: 'form',
+                    componentTemplateName: 'PC',
+                    isSetMore: true, 
+                    //是否显示更多
+                    form: [{
+                        mindjetFieldPosition: 'field-more', //在更多中显示
+                        id: 'mindjetFieldPosition1',
+                        label: '显示1:', 
+                        type: 'date',
+                        value: 1544148749870,
+                    },
+                    {
+                        mindjetFieldPosition: 'field-more',
+                        id: 'mindjetFieldPosition2',
+                        label: '显示2:',
+                        type: 'date',
+                        value: 1544148749870,
+                    }]
+                }
+                var component = NetstarComponent.formComponent.getFormConfig(formJsonmindjetFieldPosition, {});
+                NetstarComponent.formComponent.init(component, formJsonmindjetFieldPosition);
+            </script>
+            <div class="content language-javascript">
+                <pre>
+    {
+        mindjetFieldPosition: 'field-more', //在更多中显示
+        id: 'mindjetFieldPosition1',
+        label: '显示1:', 
+        type: 'date',
+        value: 1544148749870,
+    },
+    {
+        mindjetFieldPosition: 'field-more',
+        id: 'mindjetFieldPosition2',
+        label: '显示2:',
+        type: 'date',
+        value: 1544148749870,
+    }
+                    </pre>
+            </div>
+            </div>
+            <!-- 静态模式 -->
+            <div class="panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-date-static"></a>
+                <h3 class="title-code">静态模式</h3>
+                <span class="intro">静态页面(详见静态数据配置) </span>
+                <div id="nsdocs-date-static" class="panel-demo"></div>
+                <script>
+                    /* 静态模式（总）*/
+                    var formJsonState = {
+                        id: 'nsdocs-date-static',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        formSource: 'staticData',
+                        form: [{
+                            id: 'label',
+                            acts: 'label',
+                            type: 'date',
+                            inputWidth: 200,
+                            value:111,
+                        }]
+                    }
+                    var componentState = NetstarComponent.formComponent.getFormConfig(formJsonState);
+                    NetstarComponent.formComponent.init(componentState, formJsonState);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+    {
+        id: 'label',
+        acts: 'label',
+        type: 'date',
+        inputWidth: 200,
+        value: "静态模式：",
+    }
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            NetstarDocs.init();
+        })
+    </script>
+</container>
+<!--# include file="/sites/docs/include/homepage-html-dev-2.html" -->

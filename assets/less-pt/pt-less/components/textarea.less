@@ -1,0 +1,13 @@
+textarea.pt-form-control{
+    height: auto !important;
+    white-space: normal;
+    &:hover,
+    &:focus{
+        border: 1px solid @warning;
+        .form-shadow();
+        .transition();
+    }
+    .pt-form-vertical &{
+        width: 100%;
+    }
+}

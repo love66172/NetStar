@@ -1,0 +1,203 @@
+<!--# include file="/sites/docs/include/homepage-html-dev-1.html" -->
+<container>
+        <div class="netstar-docs">
+            <!-- 导航 -->
+            <div class="panel nav-stacked">
+                <div class="side-bar">
+                    <ul>
+                        <li><a href="#sense-params">参数说明</a></li>
+                        <li><a href="#sense-nsdocs-radio-value">显示的值</a></li>
+                        <li><a href="#sense-nsdocs-radio-subdata">获取数据</a></li>
+                        <li><a href="#sense-nsdocs-radio-disabled">只读</a></li>
+                        <li><a href="#sense-nsdocs-radio-width">样式宽</a></li>
+                        <li><a href="#sense-nsdocs-radio-static">静态模式</a></li>
+                        <li><a href="#sense-nsdocs-radio-checkbox">复选框参数说明</a></li>
+                        <li><a href="#sense-nsdocs-radio-checkbox-care">复选框使用注意</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容  -->
+            <div class="panel content">
+                <!-- 按钮 -->
+                <div class="panel btns-group">
+                    <!-- class="btn-default" -->
+                    <button><i class="fa-code"></i>页面配置</button>
+                    <button><i class="fa-crosshairs"></i>获取值</button>
+                    <button><i class="fa-bookmark"></i>赋值</button>
+                    <button><i class="fa-edit"></i>编辑</button>
+                </div>
+                <!--type-btns 参数 -->
+                <div class="panel panel-default params" netstar-doc="intro">
+                    <div class="panel-header">
+                        <h1>btns</h1>
+                        <h2 id="sense-params">通用参数说明</h2>
+                    </div>
+                    <div class="panel body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>必填</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>defaultMode</td>
+                                    <td>类型</td>
+                                    <td>string</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                    <td>addInfoDidalog(基本单据编辑模板，作为模板一部分页面数据执行)</td>
+                                </tr>
+                                <tr>
+                                    <td>functionClass</td>
+                                    <td>类名</td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td>modal/list </td>
+                                </tr>
+                                <tr>
+                                    <td>url</td>
+                                    <td>地址</td>
+                                    <td>string</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                    <td>modal/list </td>
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>传参类型</td>
+                                    <td>string></td>
+                                    <td></td>
+                                    <td>ajax类型，GET/POST (默认GET)</td>
+                                </tr>
+                                <tr>
+                                    <td>contentType</td>
+                                    <td>ajax的传值类型</td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td>ajax的传值类型 ‘application/json’表示传值data转化成字符串</td>
+                                </tr>
+                                <tr>
+                                    <td>text</td>
+                                    <td>文本</td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>keyField</td>
+                                    <td></td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>标题</td>
+                                    <td>string></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>isMainDbAction</td>
+                                    <td>是否执行双击事件</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>isInlineBtn</td>
+                                    <td>是否行内按钮</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>isMobileInlineBtn</td>
+                                    <td>是否手机行内按钮</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>disabledExpression</td>
+                                    <td>禁用表达式</td>
+                                    <td>object</td>
+                                    <td></td>
+                                    <td>{1:'disabled'}</td>
+                                </tr>
+                                <tr>
+                                    <td>isHaveSaveAndAdd</td>
+                                    <td>是否保存新增</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>formatValueData</td>
+                                    <td></td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>parameterFormat</td>
+                                    <td>参数格式化</td>
+                                    <td>object></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>validateParams</td>
+                                    <td>验证参数</td>
+                                    <td>object</td>
+                                    <td></td>
+                                    <td>只验证指定参数</td>
+                                </tr>
+                                <tr>
+                                    <td>getDataByAjax</td>
+                                    <td>配置ajax</td>
+                                    <td>object</td>
+                                    <td></td>
+                                    <td>打开界面的时候需要获取值调用ajax</td>
+                                </tr>
+                                <tr>
+                                    <td>matrixVariable</td>
+                                    <td>矩阵传值</td>
+                                    <td>object</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>isSendPageParams</td>
+                                    <td>是否发送页面参数</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>shortcutKey</td>
+                                    <td>快捷键</td>
+                                    <td>string</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>isKeepSelected</td>
+                                    <td>是否行选中</td>
+                                    <td>boolean</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </container>
+    
+    <!--# include file="/sites/docs/include/homepage-html-dev-2.html" -->

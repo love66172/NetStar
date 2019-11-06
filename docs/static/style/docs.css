@@ -1,0 +1,181 @@
+
+.netstar-docs{
+    width: 100%;
+    height: 100%;
+
+}
+/* 导航 */
+.netstar-docs .panel.nav-stacked{
+    display: flex;
+    position: absolute;
+    width: 280px;
+    left: 30px;
+    top: 145px;
+    font-size: 14px;
+    color:#666;
+    line-height: 30px;
+   
+}
+.netstar-docs .panel.nav-stacked .side-bar{
+    overflow: auto; 
+}
+
+.netstar-docs .panel.nav-stacked ul{
+    padding-left: 6px;
+}
+
+/* 内容 */
+.panel.content{
+    position: absolute;
+    top:100px;
+    right: 0;
+    left: 360px;
+    bottom: 0;
+    overflow:auto;   
+}
+/* 按钮 */
+.panel .btns-group{
+    min-width: 960px;
+}
+.btns-group button{
+    border: 1px solid #ccc;
+    width: 120px;
+    height: 32px;
+    background: #fff;
+    color: #777;
+    margin:30px 3px 10px 0;
+
+}
+.btns-group button i{
+    margin-right: 6px;
+}
+.btns-group button:hover{
+    color: #3f5466;
+    background: #eee;
+}
+/* --标题-- */
+
+.panel-header h1,.panel-header h2,.panel-default h2{
+    font-size: 18px;
+    line-height: 48px;
+    font-weight: 600;
+    color: #222;
+} 
+.panel .content-demo span{
+    font-size: 14px;
+    color: #555;
+}
+.panel .content-demo h3{
+    font-size: 16px;
+    line-height: 42px;
+    font-weight: 600;
+}
+.panel .content-demo h4{
+    font-size: 14px;
+    line-height: 42px;
+    background: #556677;
+}
+.panel .content-demo .intro{
+    background: #fefefe;
+}
+.panel.panel-default.params .panel-body-list h5{
+    margin-top: 24px;
+    line-height: 32px;
+    font-size: 16px;
+    color: #222;
+}
+/* 表格 */
+
+.panel-default.panel.body.params-table tr{
+    height: 30px;
+}
+.panel.body table{
+   max-width: 960px;
+   min-width: 960px;
+ }
+.panel.body table thead{
+    color: #777;
+    font-size: 14px;
+    border-bottom: 1px solid #999;
+    line-height: 40px;
+}
+.panel.body table tbody td{
+    font-size: 14px;
+    height: 54px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --代码演示 ---*/
+.language-javascript pre{
+    border:0;
+    padding: 20px;
+    background: #f9f9fa;
+    margin-bottom: 38px;
+    text-decoration: none;
+    height: 320px;
+    overflow: auto;
+    width: 960px;
+}
+.panel .content-demo .panel-demo{
+    border: 1px solid #ddd; 
+    width: 960px;
+}
+
+.panel.panel-default.params .panel-body-list li{
+    line-height: 28px;
+
+}
+/* .panel.panel-default.params .panel-body-list li:hover{
+    color:#999; 
+} */
+/*----- 装饰------ */
+      /*---- pre---- */
+.language-javascript pre .token-string{
+    color:#ef2344;
+}
+.language-javascript pre .token-number{
+    color: #2971e9;
+}
+.language-javascript pre .token-address{
+    color:#07c160;
+}
+.language-javascript pre .token-boolean{
+    color: #cfa3c6;
+}
+        /* ------菜单竖线---- */
+.panel.nav-stacked li{
+    border-left:1px solid #eee;
+}
+        /* ------装饰圆点---- */
+                    /* 实心圆点disc.png */
+.panel.nav-stacked li a{
+    background:url("../../images/disc.png") 0% no-repeat;
+    padding-left: 32px;
+    margin-left: -6px;
+   
+}                       
+                    /* 鼠标经过蓝色实心圆点disc-blue.png */
+.panel.nav-stacked li a:hover{    
+    margin-left: -6px;
+    background:url("../../images/disc-blue.png") 0% no-repeat;
+}
+                    /* 顶部空心圆点circle.png */ 
+.netstar-docs .panel.nav-stacked::before{
+    content: '';
+    top: -11px;
+    left: 2px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background:url("../../images/circle.png") no-repeat;   
+}
+                    /* 底部部空心圆点circle.png  */
+.netstar-docs .panel.nav-stacked::after{
+    content:'';
+    position: absolute;
+    bottom: 1px;
+    left: 2px;
+    width: 10px;
+    height: 10px;   
+    background:url("../../images/circle.png") 0% no-repeat; 
+}

@@ -1,0 +1,61 @@
+@e-header-breadcrumbs-height: @e-header-subpanel-height;
+@e-header-breadcrumbs-color: @e-text-gray-color;
+@e-header-breadcrumbs-font-size: @font-size-base;
+
+// 面包屑导航
+.breadcrumbs {
+    float: left;
+    height: @e-header-breadcrumbs-height;
+    padding: 0 @base-padding;
+
+    .item {
+        padding-right: @base-padding;
+        color: #fff;
+        height: @e-header-breadcrumbs-height;
+        line-height: @e-header-breadcrumbs-height;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+
+        span {
+            color: @e-header-breadcrumbs-color;
+            font-size: @e-header-breadcrumbs-font-size;
+        }
+
+        &:after {
+            position: absolute;
+            content: '\f105';
+            top: 50%;
+            right: 0;
+            font-family: @icon-font;
+            margin-top: -6px;
+            line-height: 12px;
+            color: @e-header-breadcrumbs-color;
+        }
+        &+.item {
+            margin-left: (@base-margin - 3);
+        }
+
+        &:last-child {
+            span {
+                color: #fff;
+            }
+
+            &:after {
+                display: none;
+            }
+        }
+
+        &:hover {
+            span {
+                color: #fff;
+            }
+        }
+
+
+    }
+
+
+
+
+}

@@ -1,0 +1,274 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-08 15:44:51
+ * @LastEditTime: 2019-08-13 13:44:45
+ * @LastEditors: Please set LastEditors
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代码编辑器</title>
+    <script src="jquery-1.11.3.js"></script>
+    <script src="codemirror-5.48.2/lib/jquery-1.11.3.js"></script>
+    <!-- 使用codeMirror必须引入的文件 -->
+    <link rel="stylesheet" href="codemirror-5.48.2/lib/codemirror.css">
+    <script src="codemirror-5.48.2/lib/codemirror.js"></script>
+    <!-- Javascript代码高亮引入 -->
+    <script src="codemirror-5.48.2/mode/javascript/javascript.js"></script>
+    <!-- 引入css文件，用以支持主题 -->
+    <link rel="stylesheet" href="codemirror-5.48.2/theme/eclipse.css">
+    <!-- 引入js，绑定Vim -->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/dialog/dialog.js">
+    <script src="codemirror-5.48.2/keymap/vim.js"></script>
+    <script src="codemirror-5.48.2/addon/search/searchcursor.js"></script>
+    <!--改善vim输入命令时的样式-->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/dialog/dialog.css">
+    <script src="codemirror-5.48.2/addon/dialog/dialog.js"></script>
+    <!-- 支持代码折叠 -->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/fold/foldgutter.css" />
+    <script src="codemirror-5.48.2/addon/fold/foldcode.js"></script>
+    <script src="codemirror-5.48.2/addon/fold/foldgutter.js"></script>
+    <script src="codemirror-5.48.2/addon/fold/brace-fold.js"></script>
+    <script src="codemirror-5.48.2/addon/fold/comment-fold.js"></script>
+    <!--全屏模式-->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/display/fullscreen.css">
+    <script src="codemirror-5.48.2/addon/display/fullscreen.js"></script>
+    <!-- 自动补全提示框 -->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/hint/show-hint.css">
+    <script src="codemirror-5.48.2/addon/hint/show-hint.js"></script>
+    <!-- 左右括号颜色高亮,括号匹配 -->
+    <script src="codemirror-5.48.2/addon/edit/matchbrackets.js"></script>
+    <!--行注释-->
+    <script src="codemirror-5.48.2/addon/comment/comment.js"></script>
+    <!-- 格式化 -->
+    <script src="codemirror-5.48.2/lib/formatting.js"></script>
+    <!--代码检查错误-->
+    <link rel="stylesheet" href="codemirror-5.48.2/addon/lint/lint.css">
+    <script src="codemirror-5.48.2/addon/lint/javascript-lint.js"></script>
+    <script src="codemirror-5.48.2/addon/lint/lint.js"></script>
+    <script src="codemirror-5.48.2/addon/lint/json-lint.js"></script>
+    <script src="codemirror-5.48.2/addon/hint/show-hint.js"></script>
+    <style>
+        .CodeMirror {
+            font-size: 14px;
+            color: #333;
+            font-family: Microsoft YaHei Arial sans-serif;
+            background-color: #FFF;
+            border: 1px solid #ece2e2;
+        }
+
+        button {
+            position: absolute;
+            top: 510px;
+            left: 100px;
+        }
+
+        .CodeMirror-linenumber {
+            background-color: #F7F7F7;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- code -->
+    <div>
+        <textarea id="code"></textarea>
+    </div>
+    <script>
+        var config = ajaxData();
+        // console.log(config);
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            mode:"application/json",
+            lineNumbers: true,
+            smartIndent: true, // 是否智能缩进
+            autofocus: true,
+            theme: "default",
+            matchBrackets: true,
+            extraKeys: {
+                "Esc": function (cm) {
+                    var fullScreen = cm.getOption("fullScreen");
+                    cm.setOption("fullScreen", !fullScreen);
+                },
+                "Ctrl-Q": "autocomplete"
+            },
+            mode: {
+                name: "javascript",
+                globalVars: true
+            }
+        });
+        editor.setSize('100%', '500px');
+        editor.on('keyup', function (cm, name, Event) {
+            // console.log("name",name);
+            // console.log("cm",cm);
+            // console.log("Event",Event)
+            //定义按哪些键时弹出提示框
+            if (isShow(name.keyCode)) {
+                
+                // 页面模板配置项
+                /*
+                字符串string: ['""']
+                布尔值boolean: ['true','false']
+                方法function:['function(){}']
+                obj{}:['{}']
+                数值number: ['']
+                数组[]: []
+
+                */
+                var datas = {};
+                var cur = cm.getCursor();
+                var ch = cur.ch;
+                var line = cur.line;
+                var lineStr = cm.getLine(line);
+                var fromS = lineStr.lastIndexOf(" ");
+                var fromSD = lineStr.lastIndexOf(":");
+                var endS = lineStr.length;
+                var obj = {};
+                var packgeArrary = [];
+                // debugger;
+                //自定义的API关键字
+                for(var key in config){
+                    packgeArrary.push(key);
+                    obj[key] = config[key]
+                }
+
+                if (fromS > -1) {
+                    if (fromSD > -1) {
+                        if (fromS < fromSD) {
+                            var lineEnd = lineStr.substring(endS - 1, endS);
+                            if (lineEnd == ":") {
+                                lineStr = lineStr.substring(fromS + 1, endS - 1);
+                                var list = obj[lineStr];
+
+                                if (typeof (list) != "undefined") {
+
+                                    datas.list = list;
+                                    datas.from = {};
+                                    datas.from.line = line;
+                                    datas.from.ch = ch;
+                                    datas.to = {};
+                                    datas.to.line = line;
+                                    datas.to.ch = ch + 1;
+
+                                    editor.showHint1({
+                                        completeSingle: false
+                                    }, datas);
+                                }
+                            } else {
+                                var packge = lineStr.substring(fromS + 1, fromSD);
+                                var functioStr = lineStr.substring(fromSD + 1, endS).toLowerCase();
+                                var packgeList = obj[packge];
+                                var showList = [];
+                                var showList2 = [];
+                                for (var a = 0; a < packgeList.length; a++) {
+                                    var info = packgeList[a];
+                                    if (info.toLowerCase().lastIndexOf(functioStr) > -1) {
+                                        showList.push(info);
+                                        showList2.push(a);
+                                    }
+                                }
+                                datas.list = showList;
+                                datas.showList = showList2;
+                                datas.key = packgeList[0];
+                                datas.from = {};
+                                datas.from.line = line;
+                                datas.from.ch = ch;
+                                datas.to = {};
+                                datas.to.line = line;
+                                datas.to.ch = fromSD + 1;
+                                editor.showHint1({
+                                    completeSingle: false
+                                }, datas);
+                            }
+
+                        } else {
+                            editor.showHint(); //满足自动触发自动联想功能
+                        }
+                    } else {
+                        var showList = [];
+
+                        var packgeS = lineStr.substring(fromS + 1, endS).toLowerCase();
+                        if (packgeS == "" || packgeS == null) {
+                            datas.list = packgeArrary;
+                        } else {
+                            for (var a = 0; a < packgeArrary.length; a++) {
+                                var info = packgeArrary[a];
+                                if (info.toLowerCase().lastIndexOf(packgeS) > -1) {
+                                    showList.push(info);
+                                }
+                            }
+                            datas.list = showList;
+                        }
+
+                        datas.from = {};
+                        datas.from.line = line;
+                        datas.from.ch = ch;
+                        datas.to = {};
+                        datas.to.line = line;
+                        datas.to.ch = fromS + 1;
+                        editor.showHint1({
+                            completeSingle: false
+                        }, datas);
+                    }
+                } else {
+                    editor.showHint(); //满足自动触发自动联想功能
+                }
+            }
+        });
+
+        function isShow(z) {
+
+            if (z == "8" || z == "173" || z == "190" || z == "189" || z == "110" || z == "65" || z == "66" || z ==
+                "67" || z == "68" || z == "69" || z == "70" || z == "71" || z == "72" || z == "73" || z == "74" || z ==
+                "75" || z == "76" || z == "77" || z == "78" || z == "79" || z == "80" || z == "81" || z == "82" || z == "83" || z == "84" ||
+                z == "85" || z == "86" || z == "87" || z == "88" || z == "89" || z == "90" || z == "219" || z == "186" || z == "188" || z == "13" || z == "32") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function ajaxData(){
+            var obj = {};
+            $.ajax({
+                type:'GET',
+                url:'pageKeyValue.json',
+                dataType:"json",
+                success:((data)=>{
+                    // console.log(data)
+                    // config = data;
+                    for(var key in data){
+                        if(data[key] == "function"){
+                            obj[key] = ["function(){}"];
+                        }else if(data[key] == "boolean"){
+                            obj[key] = ["true","false"];
+                        }else if(data[key] == "string"){
+                            obj[key] = ['""'];
+                        }else if(data[key] == "number"){
+                            obj[key] = [''];
+                        }else if(data[key] == "object"){
+                            obj[key] = ['{}'];
+                        }else if(data[key] == "array"){
+                            obj[key] = ['[]']
+                        }else{
+                            var array = []
+                            for(var i = 0; i < data[key].length; i ++){
+                                var str = '' + data[key][i];
+                                array.push(str);
+                            }
+                            obj[key] = array;
+                        }
+                    }
+                })
+            })
+            return obj;
+        }
+    
+    </script>
+</body>
+
+</html>

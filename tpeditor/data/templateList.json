@@ -1,0 +1,121 @@
+{
+    "success":true,
+    "rows":[
+        {
+            "id": 1,
+            "name":"模板1",
+            "type":"PC",
+            "image":"https://bpic.588ku.com/ad_diversion/19/08/16/908d032d8d2c6cc5abf23f3ed2d4aef6.png",
+            "config":{
+                "package": "erp.account.shoukuandanv3",
+                "template": "processDocBase",
+                "title": "收款单",
+                "readonly": false,
+                "isShowTitle": true,
+                "isFormHidden": false,
+                "versionNumber": "1",
+                "draftBox": {
+                    "isUse": false
+                },
+                "components":[
+                    {
+                        "id":"1.1",
+                        "rules":[]
+                    },
+                    {
+                        "id":"1.2",
+                        "rules":[]
+                    }
+                ]
+            }
+            
+        },
+        {
+            "id": 2,
+            "name":"模板2",
+            "type":"Moblie",
+            "image":"https://bpic.588ku.com/ad_diversion/19/08/16/908d032d8d2c6cc5abf23f3ed2d4aef6.png",
+            "config":{
+                "package": "erp.account.shoukuandanv3",
+                "template": "processDocBase",
+                "title": "收款单",
+                "readonly": false,
+                "isShowTitle": true,
+                "isFormHidden": false,
+                "versionNumber": "1",
+                "draftBox": {
+                    "isUse": false
+                },
+                "components":[
+                    {
+                        "id":"2.1",
+                        "rules":[]
+                    },
+                    {
+                        "id":"2.2",
+                        "rules":[]
+                    }
+                ]
+            }
+            
+        },
+        {
+            "id": 3,
+            "name":"模板3",
+            "type":"PC",
+            "image":"https://bpic.588ku.com/ad_diversion/19/08/16/908d032d8d2c6cc5abf23f3ed2d4aef6.png",
+            "config":{
+                "package": "erp.account.shoukuandanv3",
+                "template": "processDocBase",
+                "title": "收款单",
+                "readonly": false,
+                "isShowTitle": true,
+                "isFormHidden": false,
+                "versionNumber": "1",
+                "draftBox": {
+                    "isUse": false
+                },
+                "components":[
+                    {
+                        "id":"3.1",
+                        "rules":[]
+                    },
+                    {
+                        "id":"3.2",
+                        "rules":[]
+                    }
+                ]
+            }
+            
+        },
+        {
+            "id": 4,
+            "name":"模板4",
+            "type":"Moblie",
+            "image":"https://bpic.588ku.com/ad_diversion/19/08/16/908d032d8d2c6cc5abf23f3ed2d4aef6.png",
+            "config":{
+                "package": "erp.account.shoukuandanv3",
+                "template": "processDocBase",
+                "title": "收款单",
+                "readonly": false,
+                "isShowTitle": true,
+                "isFormHidden": false,
+                "versionNumber": "1",
+                "draftBox": {
+                    "isUse": false
+                },
+                "components":[
+                    {
+                        "id":"4.1",
+                        "rules":[]
+                    },
+                    {
+                        "id":"4.2",
+                        "rules":[]
+                    }
+                ]
+            }
+            
+        }
+    ]
+}

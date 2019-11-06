@@ -1,0 +1,267 @@
+<!--# include file="/sites/docs/include/homepage-html-dev-1.html" -->
+<container>
+    <div class="netstar-docs">
+        <!-- 导航 -->
+        <div class="panel nav-stacked">
+            <div class="side-bar">
+                <ul>
+                    <li><a href="#sense-params">参数说明</a></li>
+                    <li><a href="#sense-nsdocs-business-value">显示的值</a></li>
+                    <li><a href="#sense-nsdocs-business-subdata">获取数据</a></li>
+                    <li><a href="#sense-nsdocs-business-disabled">只读</a></li>
+                    <li><a href="#sense-nsdocs-business-width">样式宽</a></li>
+                    <li><a href="#sense-nsdocs-business-static">静态模式</a></li>
+                    <li><a href="#sense-nsdocs-business-checkbox">复选框参数说明</a></li>
+                    <li><a href="#sense-nsdocs-business-checkbox-care">复选框使用注意</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--内容  -->
+        <div class="panel content">
+            <!-- 按钮 -->
+            <div class="panel btns-group">
+                <!-- class="btn-default" -->
+                <button><i class="fa-code"></i>页面配置</button>
+                <button><i class="fa-crosshairs"></i>获取值</button>
+                <button><i class="fa-bookmark"></i>赋值</button>
+                <button><i class="fa-edit"></i>编辑</button>
+            </div>
+            <!-- 参数说明 -->
+            <div class="panel panel-default params" netstar-doc="intro">
+                <div class="panel-header">
+                    <h1>business</h1>
+                    <h2 id="sense-params">参数说明</h2>
+                </div>
+                <div class="panel body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>是否必填</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>唯一标识</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>组件id，实际生成的表单中名称为'form-'+id id不可重复</td>
+                            </tr>
+                            <tr>
+                                <td>source</td>
+                                <td>获得</td>
+                                <td>object</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>弹框调取的地址 参数：url：‘’ 默认{}</td>
+                            </tr>
+                            <tr>
+                                <td>searth</td>
+                                <td>路径</td>
+                                <td>object</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>回车搜索配置 参数：url：‘’；dataSrc：‘’；默认{} </td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>组件类型</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>business</td>
+                            </tr>
+                            <tr>
+                                <td>textField</td>
+                                <td>显示字段</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>选项显示的字段(默认text)</td>
+                            </tr>
+                            <tr>
+                                <td>dialogTitle</td>
+                                <td>弹框标题</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>弹框标题(默认默认弹框标题)</td>
+                            </tr>
+                            <tr>
+                                <td>infoBtnName</td>
+                                <td>基本信息</td>
+                                <td>string</td>
+                                <td><i class="fa fa-check"></i></td>
+                                <td>基本信息按钮名字</td>
+                            </tr>
+                            <tr>
+                                <td>label</td>
+                                <td>标签</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件的标签，未配置则不显示</td>
+                            </tr>
+                            <tr>
+                                <td>rules</td>
+                                <td>验证规则</td>
+                                <td>string</td>
+                                <td><i></i></td>
+                                <td>当前组件仅支持必填验证：required</td>
+                            </tr>
+                            <tr>
+                                <td>value</td>
+                                <td>显示的值</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>默认显示的值</td>
+                            </tr>
+                            <tr>
+                                <td>disabled</td>
+                                <td>只读</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否只读(默认flase)</td>
+                            </tr>
+                            <tr>
+                                <td>inputWidth</td>
+                                <td>宽</td>
+                                <td>number</td>
+                                <td></td>
+                                <td>组件除去label的宽度 与width不共存(默认100)</td>
+                            </tr>
+                            <tr>
+                                <td>width</td>
+                                <td>宽</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>组件整体宽度 *% 与inputWidth不共存</td>
+                            </tr>
+                            <tr>
+                                <td>changeHandler</td>
+                                <td>变更处理程序</td>
+                                <td>function</td>
+                                <td></td>
+                                <td>组件值改变时触发 即value值发生改变时触发</td>
+
+                            </tr>
+                            <tr>
+                                <td>hidden</td>
+                                <td>隐藏</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>是否隐藏(默认flase)</td>
+                            </tr>
+                            <tr>
+                                <td>acts</td>
+                                <td>静态参数</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>静态模式时的参数 详见：静态数据配置</td>
+                            </tr>
+                            <tr>
+                                <td>isShowDialog</td>
+                                <td>业务组件显示</td>
+                                <td>boolean</td>
+                                <td></td>
+                                <td>当前业务组件的弹框是否正在显示(默认false)</td>
+                            </tr>
+                            <tr>
+                                <td>isReadOutputFields</td>
+                                <td>代码配置</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>是否配置outputFields(false)</td>
+                            </tr>
+                            <tr>
+                                <td>defaultPageIndex</td>
+                                <td>默认显示页码</td>
+                                <td>number</td>
+                                <td></td>
+                                <td>默认false</td>
+                            <tr>
+                                <td>isOutputString</td>
+                                <td>是否输出字符串</td>
+                                <td>string</td>
+                                <td></td>
+                                <td>通过弹框获取textField获取value(默认value)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 演示试例 -->
+            <!-- 输入模式 value -->
+            <div class=" panel content-demo" netstar-doc="sample">
+                <a href="javascript:void(0);" id="sense-nsdocs-business-value"></a>
+                <!-- <span>快捷键左右选择</span> -->
+                <h3 class="title-code">显示的值</h3>
+                <span class="intro">显示默认选择</span>
+                <div id="nsdocs-business-value" class="panel-demo"></div>
+                <script>
+
+                    var formJsonValue = {
+                        id: 'nsdocs-business-value',
+                        templateName: 'form',
+                        componentTemplateName: 'PC',
+                        isSetMore: false,
+                        form: [{
+                            id: 'number',
+                            label: '数量',
+                            type: 'business',
+                            textField: 'name',
+                            inputWidth: 100,
+                            value: {
+                                id: 11,
+                                name: '10'
+                            },
+                            dialogTitle: '往来单位名称',
+                            infoBtnName: 'xxx',
+                            source: {
+                                url: getRootPath() + '/docs/pages/template-page/businessdatabase.html',
+                                type:'get',
+                                contentType:'application/x-www-form-urlencoded ',
+                                data: '',
+
+                            },
+                            search: {
+                                url: getRootPath() + '/public/static/assets/json/newcomponent/search.json',
+                                dataSrc: 'rows',
+                                type:"GET",
+                                contentType:'application/x-www-form-urlencoded ',
+                            }
+                        }]
+                    }
+                    var component = NetstarComponent.formComponent.getFormConfig(formJsonValue, {});
+                    NetstarComponent.formComponent.init(component, formJsonValue);
+                </script>
+                <div class="content language-javascript">
+                    <pre>
+
+    {
+        id: 'value',
+        label: '显示 :',   
+        type: 'business',  
+        value: '1', //value为1时默认显示男
+        textField: 'name',
+        valueField: 'id',
+        subdata:[
+            {id:'1', name:'男', state:"none"},
+            {id:'2', name:'女'},
+            {id:'3', name:'其它'}
+        ],
+        outputFields:{
+            name:"{name}",
+            statesss : "{state}",
+        }
+    } 
+
+                </pre>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    </div>
+</container>
+
+<!--# include file="/sites/docs/include/homepage-html-dev-2.html" -->
