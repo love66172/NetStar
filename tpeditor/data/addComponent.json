@@ -84,6 +84,40 @@
             "name":"按钮",
             "icon":"fa-toggle-on"  
         }
+    ],
+    "addComponentsBtns":[
+        {
+            "id":"btn",
+            "name":"提交",
+            "icon":"fa-toggle-on",
+            "btnFun":{
+                "functionConfig": {
+                    "ajaxDataVaildConfig": "required",
+                    "contentType": "application/json",
+                    "dataFormat": "object",
+                    "dataSrc": "data",
+                    "defaultMode": "custom",
+                    "functionClass": "modal",
+                    "suffix": "/account/saveReceivableBill",
+                    "text": "提交",
+                    "title": "确认提交？",
+                    "type": "POST",
+                    "voName": "accountNewReceivableBillVo",
+                    "entityName": "account",
+                    "chineseName": "保存收款方式",
+                    "englishName": "commitReceivableBill",
+                    "isCloseWindow": true,
+                    "isInlineBtn": false,
+                    "dataType": "json",
+                    "defaultData": {},
+                    "url": "https://www.wangxingcloud.com/account/saveReceivableBill"
+                  },
+                  "btn": {
+                    "text": "提交",
+                    "isReturn": true
+                  }
+            }
+        }
     ]
 
 }

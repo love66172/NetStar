@@ -941,6 +941,7 @@
                 var addedCptList = _this.componentSourceList;
                 var currentSecondIndex = _this.currentSecondIndex
                 console.log("添加表单", param);
+                console.log("当前下标",currentSecondIndex)
                 console.log("初始化表单Json", selectJsonData);
                 console.log("已添加list", addedCptList);
                 if (param.id == "select") {
@@ -962,6 +963,11 @@
                     var fieldsList = _this.dataJson.components[currentSecondIndex].field;
                     fieldsList.push(addCptJson);
                     // _this.dataJson.components[currentIndex].field.push(params);
+                }
+                if(param.id == "btn"){
+                    var addCptJson = param.btnFun;
+                    var fieldsList = _this.dataJson.components[currentSecondIndex].field;
+                    fieldsList.push(addCptJson);
                 }
                 setTimeout(() => {
                     _this.setHotareaPlace();
@@ -1021,11 +1027,11 @@
                 
                 _this.activeCptField = -1;
                 if (param.type == "vo") {
-                    _this.addComponentList = _this.addJson.addComponentsVo
+                    _this.addComponentList = _this.addJson.addComponentsVo;
                 } else if (param.type == "list") {
-                    _this.addComponentList = _this.addJson.addComponentsList
-                } else {
-                    _this.addComponentList = []
+                    _this.addComponentList = _this.addJson.addComponentsList;
+                } else if (param.type == "btns"){
+                    _this.addComponentList = _this.addJson.addComponentsBtns;
                 }
 
             },
