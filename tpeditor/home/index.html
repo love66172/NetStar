@@ -1019,6 +1019,8 @@
                 console.log("要匹配的字段", param);
                 var formValue = NetstarComponent.getValues("form-vertical");
                 _this.templateJson = param;
+                var codeMirrorValue = JSON.stringify(param, null, 2) ? JSON.stringify(param, null, 2) : JSON.stringify({});
+                _this.professionalMode(codeMirrorValue);
                 $("#form-vertical").empty();
                 $("#form-vertical-data").empty();
                 var showOperateJson = _this.properityJson;
@@ -1047,9 +1049,7 @@
                 // console.log("修改后的", operator);
                 var editorProfessional = JSON.stringify(dealForm(formOperator, param), null, 2) ? JSON
                     .stringify(dealForm(formOperator, param), null, 2) : JSON.stringify({});
-                var codeMirrorValue = JSON.stringify(param, null, 2) ? JSON.stringify(param, null, 2) : JSON
-                    .stringify({});
-                _this.professionalMode(codeMirrorValue)
+                
                 var componentOperator = NetstarComponent.formComponent.getFormConfig(operator, {});
                 NetstarComponent.formComponent.init(componentOperator, operator);
                 var componentData = NetstarComponent.formComponent.getFormConfig(dataProperity, {});
@@ -1093,12 +1093,13 @@
             // 专业模式编辑器
             professionalMode(param) {
                 var _this = this;
-                // console.log(110,param)
+                // console.log(110,param);
                 var editor = CodeMirror.fromTextArea(document.getElementById("form-mode-pro-textarea"), {
                     mode: "application/json",
                     lineNumbers: true,
-                    smartIndent: true, // 是否智能缩进
+                    smartIndent: false, // 是否智能缩进
                     autofocus: true,
+                    autoRefresh:true,
                     theme: "default",
                     matchBrackets: true,
                     extraKeys: {
@@ -1124,6 +1125,9 @@
                 });
                 // _this.editorProfessionalValueObj = JSON.parse(param)
                 editor.setValue(param);
+                setTimeout(() => {
+                    editor.refresh();
+                }, 1000);
 
                 editor.setSize('100%', '800px');
                 editor.on('keyup', function (cm, name, Event) {
