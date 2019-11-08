@@ -362,8 +362,7 @@
                                                                     <input type="text" class="pt-form-control"
                                                                         placeholder="">
                                                                     <div class="pt-input-group-btn">
-                                                                        <button
-                                                                            class="pt-btn pt-btn-default pt-btn-icon">
+                                                                        <button class="pt-btn pt-btn-default pt-btn-icon" type="button">
                                                                             <i class="fa-caret-down"></i>
                                                                         </button>
                                                                     </div>
@@ -1095,7 +1094,7 @@
                 var _this = this;
                 // console.log(110,param);
                 var editor = CodeMirror.fromTextArea(document.getElementById("form-mode-pro-textarea"), {
-                    mode: "application/json",
+                    mode: "text/json",
                     lineNumbers: true,
                     smartIndent: false, // 是否智能缩进
                     autofocus: true,
