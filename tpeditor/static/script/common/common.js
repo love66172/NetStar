@@ -69,7 +69,7 @@ function ajaxDataJson() {
                 } else {
                     var array = [];
                     for (var i = 0; i < data[key].length; i++) {
-                        var str = '"' + data[key][i] + '"';
+                        var str =  data[key][i] ;
                         array.push(str);
                     }
                     obj[key] = array;
