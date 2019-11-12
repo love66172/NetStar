@@ -1206,6 +1206,7 @@
                 var _this = this;
                 _this.showWelcome = false;
                 _this.dataJson = _this.dataJsonTemp;
+                _this.current = -1;
                 _this.showFilesModals = false;
                 if (_this.dataJson) {
                     setTimeout(() => {
@@ -1609,23 +1610,41 @@
                 var pageConfig = _this.dataJson;
                 var pageConfigCptList = pageConfig.components;
                 var currentSecondIndex = _this.currentSecondIndex;
-                console.log(currentSecondIndex);
-                for (var i = 0; i < pageConfigCptList.length; i++) {
-                    var componentFieldList = pageConfigCptList[i].field;
-                    for (var j = 0; j < componentFieldList.length; j++) {
-                        var orginalCptField = componentFieldList[j].id ? componentFieldList[j].id :
-                            componentFieldList[j].field;
-                        if (orginalCptField) {
-                            var matchConfigId = obj.id ? obj.id : obj.field;
-                            if (matchConfigId) {
-                                if (matchConfigId == orginalCptField) {
-                                    pageConfigCptList[i].field[j] = obj;
+                console.log("当前下标",currentSecondIndex);
+                if(currentSecondIndex == -1){ // 判断是否为页面的配置项
+                    if(obj.field instanceof Array){
+                        for(var i = 0; i < pageConfigCptList.length; i++){
+                            if(diff(obj,pageConfigCptList[i])){
+                                // console.log("不同",obj)
+                                pageConfigCptList[i] = obj;
+                            }
+                        }
+                        _this.dataJson.components = pageConfigCptList
+                    }else{
+                        var assignObj = {};
+                        Object.assign(assignObj,obj,{components:_this.dataJson.components});
+                        _this.dataJson = assignObj;
+                    }
+                    
+                }else{
+                    for (var i = 0; i < pageConfigCptList.length; i++) {
+                        var componentFieldList = pageConfigCptList[i].field;
+                        for (var j = 0; j < componentFieldList.length; j++) {
+                            var orginalCptField = componentFieldList[j].id ? componentFieldList[j].id :
+                                componentFieldList[j].field;
+                            if (orginalCptField) {
+                                var matchConfigId = obj.id ? obj.id : obj.field;
+                                if (matchConfigId) {
+                                    if (matchConfigId == orginalCptField) {
+                                        pageConfigCptList[i].field[j] = obj;
+                                    }
                                 }
                             }
                         }
                     }
+                    _this.dataJson.components = pageConfigCptList;
                 }
-                _this.dataJson.components = pageConfigCptList;
+                
 
             },
 
@@ -1675,7 +1694,7 @@
                 _this.showWelcome = false;
                 _this.showModals = false;
                 _this.getDataSource();
-
+                _this.currentFiles = -1;
                 if(_this.dataJsonTemp){
                     _this.dataJson = _this.dataJsonTemp;
                     var confirmTemplate = JSON.parse(JSON.stringify(_this.selectTemplateValue));
@@ -2208,14 +2227,17 @@
                     domType.push(typeObj);
                     var fieldList = pageJsonCpt[i].field;
                     console.log("不同类型components下的Field", fieldList)
-                    for (var j = 0; j < fieldList.length; j++) {
-                        var obj = {
-                            id: fieldList[j].id ? fieldList[j].id : fieldList[j].field ?
-                                fieldList[j].field : fieldList[j].functionConfig.englishName,
-                            elseAttr: fieldList[j]
+                    if(fieldList instanceof Array){
+                        for (var j = 0; j < fieldList.length; j++) {
+                            var obj = {
+                                id: fieldList[j].id ? fieldList[j].id : fieldList[j].field ?
+                                    fieldList[j].field : fieldList[j].functionConfig.englishName,
+                                elseAttr: fieldList[j]
+                            }
+                            domArr.push(obj)
                         }
-                        domArr.push(obj)
                     }
+                    
                 };
                 console.log("提出的components",domType);
 
