@@ -456,7 +456,7 @@
                         <i class="fa-window-restore"></i>
                     </button>
                 </div>
-                <a href="##" class="close" @click="close"></a>
+                <a href="##" class="close" @click="close()"></a>
             </div>
             <!-- 模态框内容部分 -->
             <div class="modal-body">
@@ -861,8 +861,8 @@
             draging: null,                              // 被拖拽的对象
             target: null,                               // 目标对象
 
-            idBaseHead: "nstemplate-layout",            // 拼接id需要的固定部分
-            idBasefoot: "container",                    // 拼接id需要的固定部分
+            idBaseHead: "nstemplate-layout-",            // 拼接id需要的固定部分
+            idBasefoot: "-container",                    // 拼接id需要的固定部分
 
             activeCptField: -1,                         // 当前选中的field下标
 
@@ -1712,7 +1712,7 @@
 
             },
 
-            // 保存
+            // 保存json串
             save() {
                 var _this = this;
                 var templateJson = JSON.parse(JSON.stringify(_this.dataJson));
@@ -2182,23 +2182,29 @@
             getPackageNameId() {
                 var _this = this;
                 var packageName = _this.dataJson.package;
-                var packageId = "-" + packageName.replace(/\./g, "-") + "-";
+                var packageId = packageName.replace(/\./g, "-");
                 return packageId
             },
-            getDomIdPanel() {
-                var panelId = this.idBaseHead + this.getPackageNameId() + this.idBasefoot;
+            getDomIdPanel(templateName) {
+                var _this = this;
+                var panelId = "";
+                if(templateName == "processDocBase"){
+                    panelId = _this.idBaseHead + _this.getPackageNameId() + _this.idBasefoot
+                }else if(templateName == "businessDataBase"){
+                    panelId = _this.idBaseHead + _this.getPackageNameId();
+                }
                 console.log("该页面容器的id值",panelId);
                 return panelId;
             },
 
             /*
                 功能: 将整个功能面板通过小块圈出来
-                返回值: 当前面板的位置,大小组成的对象
+                返回值: 当前面板的位置,宽度、高度、相对位置组成的对象
             
             */
-            getDomIdPosition() {
+            getDomIdPosition(templateName) {
                 var _this = this;
-                var domId = _this.getDomIdPanel();
+                var domId = _this.getDomIdPanel(templateName);
                 var domPlace = $("#" + domId).offset();
                 // var domSize = $("#" + domId).width();
                 var domSize = {
@@ -2240,39 +2246,42 @@
                     
                 };
                 console.log("提出的components",domType);
-
                 console.log("提出NSField", domArr);
-                for (var i = 0; i < domArr.length; i++) {
-                    if (domArr[i].id) {
-                        var domData = $("[ns-field='" + domArr[i].id + "']");
-                        var nsField = JSON.stringify(domArr[i].elseAttr);
-                        // console.log(123,domData);
-                        if (domData[0]) {
-                            if (domData[0].className.indexOf("hide") == -1) {
-                                $("<div class='hot-point state-default' onclick='findCurrentField(this)' data-item='" +
-                                    nsField + "'></div>").appendTo($(".mask .hot-area"))
-
-                                var domSize = {
-                                    width: domData.width(),
-                                    height: domData.height(),
-                                }
-                                var domOffset = domData.offset();
-                                var currentDomPlace = {};
-                                Object.assign(currentDomPlace, domSize, domOffset);
-                                // console.log(234,currentDomPlace);
-                                domPlace.push(currentDomPlace)
-                            }
-                        }
-                    }
-
-
-
-                }
+                // debugger;
                 for (var i = 0; i < domType.length; i++) {
                     if(domType[i].type){
-                        var domTypeData = $("#" + _this.idBaseHead + _this.getPackageNameId() + domType[i].type + "-" + i);
+                        var domTypeData = $("#" + _this.idBaseHead + _this.getPackageNameId() + "-" + domType[i].type + "-" + i);
                         var nsCpt = JSON.stringify(domType[i].elseAttr);
-                        // console.log("当前cpt",domTypeData);
+                        console.log("当前cpt",domTypeData);
+                        for (var j = 0; j < domArr.length; j++) {
+                            if (domArr[j].id) {
+                                var domTypeDataTemp = "#" + _this.idBaseHead + _this.getPackageNameId() + "-" + domType[i].type + "-" + i;
+                                if(domType[i].type == "list"){
+                                    domTypeDataTemp = "#" + _this.idBaseHead + _this.getPackageNameId() + "-" + domType[i].type + "-" + i + "-headertable";
+                                }else if(domType[i].type == "vo"){
+                                    domTypeDataTemp = "#" + "form" + "-" + _this.idBaseHead + _this.getPackageNameId() + "-" + domType[i].type + "-" + i;
+                                }
+                                var domData = $(domTypeDataTemp + " " + "[ns-field='" + domArr[j].id + "']");
+                                var nsField = JSON.stringify(domArr[j].elseAttr);
+                                // console.log(123,domData);
+                                if (domData[0]) {
+                                    if (domData[0].className.indexOf("hide") == -1) {
+                                        $("<div class='hot-point state-default' onclick='findCurrentField(this)' data-item='" +
+                                            nsField + "'></div>").appendTo($(".mask .hot-area"))
+
+                                        var domSize = {
+                                            width: domData.width(),
+                                            height: domData.height(),
+                                        }
+                                        var domOffset = domData.offset();
+                                        var currentDomPlace = {};
+                                        Object.assign(currentDomPlace, domSize, domOffset);
+                                        // console.log(234,currentDomPlace);
+                                        domPlace.push(currentDomPlace)
+                                    }
+                                }
+                            }
+                        }
                         if(domTypeData[0]){
                             $("<div class='hot-type state-default' onclick='findCurrentCpt(this)' data-item='" +
                                     nsCpt + "'></div>").appendTo($(".mask .hot-area"))
@@ -2299,7 +2308,8 @@
             */
             setHotareaPlace() {
                 var _this = this;
-                var placeAll = _this.getDomIdPosition(); // 获取整个面板位置方法
+                var templateName = _this.dataJson.template;
+                var placeAll = _this.getDomIdPosition(templateName); // 获取整个面板位置方法
                 console.log("整个面板位置",placeAll);
                 var voPlaceList = _this.getPageFieldDom();
                 console.log("field位置",voPlaceList);
@@ -2313,6 +2323,7 @@
                     voPlaceList[i].left = voPlaceList[i].left - placeAll.left;
                     voPlaceDealList.push(voPlaceList[i]);
                 }
+                
                 for (var i = 0; i < voPlaceDealList.length; i++) {
                     var pointDefault = $(".mask .hot-area .state-default").eq(i);
                     for (var key in voPlaceDealList[i]) {
